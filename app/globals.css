@@ -1,26 +1,184 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant light (&:where(.light, .light *));
 
 @theme inline {
+  --font-sans: var(--font-titillium), "Titillium Web", sans-serif;
+  --font-display: var(--font-oswald), Oswald, sans-serif;
+  --font-script: var(--font-great), "Great Vibes", cursive;
+  --color-ft-red: #e10600;
+  --color-ft-ink: #15151e;
+  --color-ft-paper: #f6f4f0;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-panel: var(--panel);
+  --color-border: var(--border);
+  --color-nav: var(--nav);
+  --color-stage: var(--stage);
+  --color-band: var(--band);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root,
+.light {
+  color-scheme: light;
+  --background: #f3f1ec;
+  --foreground: #15151e;
+  --muted: rgba(21, 21, 30, 0.62);
+  --card: #ffffff;
+  --card-foreground: #15151e;
+  --panel: #ffffff;
+  --border: rgba(21, 21, 30, 0.12);
+  --nav: #0b0b10;
+  --stage: #eceae4;
+  --band: #0c0c10;
+  --services: #e8e6e0;
+  --service-card: #ffffff;
+  --paper: #ffffff;
+  --stage-glow: rgba(225, 6, 0, 0.1);
+  --stage-line: rgba(21, 21, 30, 0.04);
+  --nav-line: rgba(255, 255, 255, 0.04);
+  --partner-text: rgba(21, 21, 30, 0.72);
+}
+
+.dark {
+  color-scheme: dark;
+  --background: #15151e;
+  --foreground: #ffffff;
+  --muted: rgba(255, 255, 255, 0.75);
+  --card: #101016;
+  --card-foreground: #ffffff;
+  --panel: #0c0c10;
+  --border: rgba(255, 255, 255, 0.1);
+  --nav: #0b0b10;
+  --stage: #15151e;
+  --band: #0c0c10;
+  --services: #0c0c0f;
+  --service-card: #121214;
+  --paper: #f6f4f0;
+  --stage-glow: rgba(225, 6, 0, 0.18);
+  --stage-line: rgba(255, 255, 255, 0.018);
+  --nav-line: rgba(255, 255, 255, 0.04);
+  --partner-text: rgba(255, 255, 255, 0.8);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
+  font-family: var(--font-sans);
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background: #e10600;
+  color: #fff;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #e10600;
+  outline-offset: 2px;
+}
+
+.rail {
+  scrollbar-width: none;
+}
+
+.rail::-webkit-scrollbar {
+  display: none;
+}
+
+.clip-play {
+  position: absolute;
+  z-index: 20;
+  left: 1.25rem;
+  top: 50%;
+  right: auto;
+  bottom: auto;
+  width: 3.5rem;
+  height: 3.5rem;
+  transform: translateY(-50%);
+}
+
+.nav-carbon {
+  background-color: var(--nav);
+  color: #fff;
+  background-image: repeating-linear-gradient(
+    -58deg,
+    var(--nav-line) 0 1px,
+    transparent 1px 8px
+  );
+}
+
+.home-stage {
+  background-color: var(--stage);
+  background-image:
+    radial-gradient(1100px 480px at 12% -10%, var(--stage-glow), transparent 58%),
+    repeating-linear-gradient(-58deg, transparent 0 14px, var(--stage-line) 14px 15px);
+}
+
+.surface-panel {
+  background-color: var(--panel);
+  color: var(--foreground);
+}
+
+.surface-card {
+  background-color: var(--card);
+  color: var(--card-foreground);
+  border-color: var(--border);
+}
+
+.services-stage {
+  background-color: var(--services);
+  color: var(--foreground);
+}
+
+.service-card {
+  background-color: var(--service-card);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+}
+
+.paper-stage {
+  background-color: var(--paper);
+  color: #15151e;
+}
+
+.dot-field {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.34) 0.85px, transparent 1px);
+  background-size: 8px 8px;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 42%, #000 100%);
+}
+
+.marquee-mask {
+  overflow: hidden;
+}
+
+.marquee-track {
+  animation: partners-marquee 28s linear infinite;
+}
+
+.marquee-mask:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes partners-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
 }
