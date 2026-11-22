@@ -6,6 +6,7 @@ import { Play } from "lucide-react";
 import { CtaBand } from "@/components/cta-band";
 import { FadeIn } from "@/components/motion";
 import { allVideos, videoBySlug } from "@/lib/content";
+import { withBasePath } from "@/lib/paths";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -40,7 +41,7 @@ export default async function VideoDetailPage({ params }: Props) {
           playsInline
           poster={video.image}
         >
-          <source src="/videos/hero.mp4" type="video/mp4" />
+          <source src={withBasePath("/videos/hero.mp4")} type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/65 to-[#15151e]" />
         <div className="relative z-10 mx-auto flex min-h-[70vh] max-w-[1440px] flex-col justify-end px-4 py-16 text-white md:px-6 md:py-20">

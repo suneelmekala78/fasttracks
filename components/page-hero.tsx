@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { FadeIn } from "@/components/motion";
+import { withBasePath } from "@/lib/paths";
 
 export function PageHero({
   kicker,
@@ -32,9 +33,9 @@ export function PageHero({
             muted
             loop
             playsInline
-            poster={image || "/media/speed.jpg"}
+            poster={withBasePath(image || "/media/speed.jpg")}
           >
-            <source src="/videos/hero.mp4" type="video/mp4" />
+            <source src={withBasePath("/videos/hero.mp4")} type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/60 to-black/85" />
         </>

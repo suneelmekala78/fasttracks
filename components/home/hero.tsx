@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { WhatsAppIcon } from "@/components/whatsapp-icon";
+import { withBasePath } from "@/lib/paths";
 import { whatsappHref } from "@/lib/site";
 
 export function Hero() {
@@ -58,9 +59,9 @@ export function Hero() {
         muted
         loop
         playsInline
-        poster="/media/speed.jpg"
+        poster={withBasePath("/media/speed.jpg")}
       >
-        <source src="/videos/hero.mp4" type="video/mp4" />
+        <source src={withBasePath("/videos/hero.mp4")} type="video/mp4" />
       </video>
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/55 to-black/80" />
       <div className="relative z-10 mx-auto flex min-h-[calc(100svh-4rem)] max-w-5xl flex-col items-center justify-center px-4 py-16 text-center">
