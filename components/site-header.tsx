@@ -44,7 +44,7 @@ export function SiteHeader() {
   }, []);
 
   return (
-    <header ref={headerRef} className="sticky top-0 z-50 nav-carbon text-white">
+    <header ref={headerRef} className="sticky top-0 z-50 nav-carbon">
       <div className="relative mx-auto flex h-16 max-w-[1440px] items-center px-4 md:px-6">
         <Link href="/" aria-label="Fasttracks Car Care home" className="relative z-10 shrink-0">
           <Image
@@ -57,7 +57,7 @@ export function SiteHeader() {
           />
         </Link>
 
-        <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-7 text-[15px] font-semibold lg:flex">
+        <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-7 text-[15px] font-semibold text-nav-fg lg:flex">
           {mainNav.map((link) =>
             link.href === "/services" ? (
               <div key={link.href} className="relative">
@@ -66,7 +66,7 @@ export function SiteHeader() {
                   className={`flex items-center gap-1 border-b-2 py-1 ${
                     isActive(pathname, "/services") || pathname === "/recliners"
                       ? "border-[#e10600]"
-                      : "border-transparent hover:border-white/50"
+                      : "border-transparent hover:border-nav-fg/40"
                   }`}
                   aria-expanded={servicesOpen}
                   onClick={() => {
@@ -78,9 +78,13 @@ export function SiteHeader() {
                   <ChevronDown className={`h-4 w-4 ${servicesOpen ? "rotate-180" : ""}`} />
                 </button>
                 {servicesOpen ? (
-                  <div className="absolute left-0 top-[calc(100%+14px)] z-50 w-72 rounded-xl bg-white py-2 text-sm font-semibold text-[#15151e] shadow-2xl">
+                  <div className="absolute left-0 top-[calc(100%+14px)] z-50 w-72 rounded-xl border border-border bg-card py-2 text-sm font-semibold text-card-foreground shadow-2xl">
                     {serviceLinks.map((item) => (
-                      <Link key={item.href + item.label} href={item.href} className="block px-4 py-2.5 hover:bg-[#f6f4f0]">
+                      <Link
+                        key={item.href + item.label}
+                        href={item.href}
+                        className="block px-4 py-2.5 hover:bg-foreground/5"
+                      >
                         {item.label}
                       </Link>
                     ))}
@@ -92,7 +96,7 @@ export function SiteHeader() {
                 key={link.href}
                 href={link.href}
                 className={`border-b-2 py-1 ${
-                  isActive(pathname, link.href) ? "border-[#e10600]" : "border-transparent hover:border-white/50"
+                  isActive(pathname, link.href) ? "border-[#e10600]" : "border-transparent hover:border-nav-fg/40"
                 }`}
                 aria-current={isActive(pathname, link.href) ? "page" : undefined}
               >
@@ -115,7 +119,7 @@ export function SiteHeader() {
           </a>
           <button
             type="button"
-            className="grid h-10 w-10 place-items-center rounded-md hover:bg-white/10 lg:hidden"
+            className="grid h-10 w-10 place-items-center rounded-md hover:bg-[var(--nav-hover)] lg:hidden"
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
             onClick={() => {
@@ -129,15 +133,15 @@ export function SiteHeader() {
       </div>
 
       {menuOpen ? (
-        <div className="border-t border-white/10 bg-[#101014] lg:hidden">
+        <div className="border-t border-nav-border bg-nav lg:hidden">
           <div className="mx-auto flex max-w-[1440px] flex-col gap-1 px-4 py-4">
             {mainNav.map((link) => (
-              <Link key={link.href} href={link.href} className="py-2 text-sm font-semibold">
+              <Link key={link.href} href={link.href} className="py-2 text-sm font-semibold text-nav-fg">
                 {link.label}
               </Link>
             ))}
             {serviceLinks.slice(0, -1).map((link) => (
-              <Link key={link.href} href={link.href} className="py-1.5 pl-3 text-sm text-white/70">
+              <Link key={link.href} href={link.href} className="py-1.5 pl-3 text-sm text-nav-muted">
                 {link.label}
               </Link>
             ))}

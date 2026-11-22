@@ -1,17 +1,5 @@
 import Link from "next/link";
-
-const partners = [
-  "Menzerna",
-  "Travo",
-  "Toyota",
-  "Mercedes-Benz",
-  "BMW",
-  "Land Rover",
-  "Kia",
-  "Mahindra",
-  "Hyundai",
-  "Isuzu",
-];
+import { partners } from "@/lib/services";
 
 export function Partners() {
   return (
@@ -28,13 +16,13 @@ export function Partners() {
         <div className="marquee-track flex w-max">
           {[0, 1].map((copy) => (
             <ul key={copy} className="flex items-center gap-16 pr-16" aria-hidden={copy === 1}>
-              {partners.map((name) => (
+              {partners.map((partner) => (
                 <li
-                  key={`${copy}-${name}`}
+                  key={`${copy}-${partner.name}`}
                   className="font-display text-2xl font-bold uppercase tracking-[0.18em]"
                   style={{ color: "var(--partner-text)" }}
                 >
-                  {name}
+                  {partner.name}
                 </li>
               ))}
             </ul>

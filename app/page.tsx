@@ -4,6 +4,7 @@ import { Founder } from "@/components/home/founder";
 import { Hero } from "@/components/home/hero";
 import { OurServices } from "@/components/home/our-services";
 import { Partners } from "@/components/home/partners";
+import { Reviews } from "@/components/home/reviews";
 import { SignatureServices } from "@/components/home/signature-services";
 import { StudioYears } from "@/components/home/studio-years";
 import { VideoRail } from "@/components/home/video-rail";
@@ -25,6 +26,7 @@ export default function HomePage() {
         <div className="h-[7px] bg-[#e10600]" />
         <SignatureServices />
       </div>
+      <Reviews />
       <div className="bg-background text-foreground">
         <VideoRail title="2026 Highlights" href="/videos" clips={highlights} />
         <Partners />

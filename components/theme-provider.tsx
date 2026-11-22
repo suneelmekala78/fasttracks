@@ -4,9 +4,9 @@ import {
   createContext,
   useCallback,
   useContext,
-  useEffect,
   useMemo,
   useState,
+  useSyncExternalStore,
   type ReactNode,
 } from "react";
 import {
@@ -25,28 +25,29 @@ type ThemeContextValue = {
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
-export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>(DEFAULT_THEME);
+function subscribe() {
+  return () => {};
+}
 
-  useEffect(() => {
-    const stored = readStoredTheme();
-    setThemeState(stored);
-    applyTheme(stored);
-  }, []);
+export function ThemeProvider({ children }: { children: ReactNode }) {
+  const hydrated = useSyncExternalStore(subscribe, () => true, () => false);
+  const [override, setOverride] = useState<Theme | null>(null);
+  const theme = override ?? (hydrated ? readStoredTheme() : DEFAULT_THEME);
 
   const setTheme = useCallback((next: Theme) => {
-    setThemeState(next);
     try {
       localStorage.setItem(THEME_STORAGE_KEY, next);
     } catch {
       /* ignore */
     }
     applyTheme(next);
+    setOverride(next);
   }, []);
 
   const toggleTheme = useCallback(() => {
-    setThemeState((current) => {
-      const next: Theme = current === "dark" ? "light" : "dark";
+    setOverride((current) => {
+      const base = current ?? readStoredTheme();
+      const next: Theme = base === "dark" ? "light" : "dark";
       try {
         localStorage.setItem(THEME_STORAGE_KEY, next);
       } catch {

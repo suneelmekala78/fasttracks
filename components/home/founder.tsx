@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import { Instagram } from "lucide-react";
+import { FadeIn, Reveal } from "@/components/motion";
 import { WhatsAppIcon } from "@/components/whatsapp-icon";
 import { founderInstagram, studioInstagram, whatsappHref } from "@/lib/site";
 
@@ -8,20 +11,22 @@ export function Founder() {
     <section className="surface-panel text-foreground">
       <div className="mx-auto grid max-w-[1440px] items-center gap-10 px-4 py-16 md:px-6 md:py-24 lg:grid-cols-[minmax(0,0.86fr)_minmax(0,1.14fr)] lg:gap-16">
         <figure>
-          <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-black">
-            <Image
-              src="/images/founder.jpg"
-              alt="Rakesh Kurapati, founder of Fasttracks Car Care, at the Jubilee Hills studio"
-              fill
-              sizes="(min-width: 1024px) 40vw, 100vw"
-              className="object-cover object-center"
-            />
-          </div>
+          <Reveal className="rounded-[2rem]">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-black">
+              <Image
+                src="/images/founder.jpg"
+                alt="Rakesh Kurapati, founder of Fasttracks Car Care, at the Jubilee Hills studio"
+                fill
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                className="object-cover object-center"
+              />
+            </div>
+          </Reveal>
           <figcaption className="mt-4 text-[11px] font-bold uppercase tracking-[0.18em] text-muted">
             Rakesh Kurapati · Jubilee Hills studio
           </figcaption>
         </figure>
-        <div>
+        <FadeIn delay={0.08}>
           <p className="text-xs font-bold uppercase tracking-[0.28em] text-[#e10600] md:text-sm">
             Founder spotlight
           </p>
@@ -76,7 +81,7 @@ export function Founder() {
               WhatsApp
             </a>
           </div>
-        </div>
+        </FadeIn>
       </div>
     </section>
   );

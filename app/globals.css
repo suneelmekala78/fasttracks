@@ -18,6 +18,9 @@
   --color-panel: var(--panel);
   --color-border: var(--border);
   --color-nav: var(--nav);
+  --color-nav-fg: var(--nav-fg);
+  --color-nav-muted: var(--nav-muted);
+  --color-nav-border: var(--nav-border);
   --color-stage: var(--stage);
   --color-band: var(--band);
 }
@@ -32,7 +35,12 @@
   --card-foreground: #15151e;
   --panel: #ffffff;
   --border: rgba(21, 21, 30, 0.12);
-  --nav: #0b0b10;
+  --nav: #ffffff;
+  --nav-fg: #15151e;
+  --nav-muted: rgba(21, 21, 30, 0.55);
+  --nav-border: rgba(21, 21, 30, 0.1);
+  --nav-line: rgba(21, 21, 30, 0.035);
+  --nav-hover: rgba(21, 21, 30, 0.06);
   --stage: #eceae4;
   --band: #0c0c10;
   --services: #e8e6e0;
@@ -40,7 +48,6 @@
   --paper: #ffffff;
   --stage-glow: rgba(225, 6, 0, 0.1);
   --stage-line: rgba(21, 21, 30, 0.04);
-  --nav-line: rgba(255, 255, 255, 0.04);
   --partner-text: rgba(21, 21, 30, 0.72);
 }
 
@@ -54,6 +61,11 @@
   --panel: #0c0c10;
   --border: rgba(255, 255, 255, 0.1);
   --nav: #0b0b10;
+  --nav-fg: #ffffff;
+  --nav-muted: rgba(255, 255, 255, 0.7);
+  --nav-border: rgba(255, 255, 255, 0.1);
+  --nav-line: rgba(255, 255, 255, 0.04);
+  --nav-hover: rgba(255, 255, 255, 0.1);
   --stage: #15151e;
   --band: #0c0c10;
   --services: #0c0c0f;
@@ -61,7 +73,6 @@
   --paper: #f6f4f0;
   --stage-glow: rgba(225, 6, 0, 0.18);
   --stage-line: rgba(255, 255, 255, 0.018);
-  --nav-line: rgba(255, 255, 255, 0.04);
   --partner-text: rgba(255, 255, 255, 0.8);
 }
 
@@ -108,12 +119,14 @@ button:focus-visible {
 
 .nav-carbon {
   background-color: var(--nav);
-  color: #fff;
+  color: var(--nav-fg);
+  border-bottom: 1px solid var(--nav-border);
   background-image: repeating-linear-gradient(
     -58deg,
     var(--nav-line) 0 1px,
     transparent 1px 8px
   );
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
 }
 
 .home-stage {

@@ -3,18 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useLayoutEffect, useRef, useState } from "react";
-import {
-  ArrowRight,
-  Armchair,
-  CircleDot,
-  Paintbrush,
-  Shield,
-  Sofa,
-  Sparkles,
-  Speaker,
-  SunMedium,
-  type LucideIcon,
-} from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 
 const services: {
@@ -23,7 +12,8 @@ const services: {
   href: string;
   image: string;
   imageAlt: string;
-  icon: LucideIcon;
+  tag: string;
+  categories: string[];
 }[] = [
   {
     title: "Luxury Recliners",
@@ -31,7 +21,8 @@ const services: {
     href: "/recliners",
     image: "/media/speed.jpg",
     imageAlt: "Performance car in motion",
-    icon: Armchair,
+    tag: "Most requested",
+    categories: ["Cabin", "Fitment"],
   },
   {
     title: "Paint Protection",
@@ -39,7 +30,8 @@ const services: {
     href: "/services/ppf",
     image: "/media/wheel.jpg",
     imageAlt: "Close view of a performance tyre",
-    icon: Shield,
+    tag: "PPF",
+    categories: ["Protection", "Film"],
   },
   {
     title: "SRS Correction",
@@ -47,7 +39,8 @@ const services: {
     href: "/services/srs",
     image: "/media/pink.jpg",
     imageAlt: "Gloss paint on a car nose",
-    icon: Sparkles,
+    tag: "Signature",
+    categories: ["Paint", "Correction"],
   },
   {
     title: "Custom Audio",
@@ -55,7 +48,8 @@ const services: {
     href: "/services/audio",
     image: "/media/red.jpg",
     imageAlt: "Car running along painted kerbs",
-    icon: Speaker,
+    tag: "From ₹1L",
+    categories: ["Sound", "Cabin"],
   },
   {
     title: "Interiors",
@@ -63,7 +57,8 @@ const services: {
     href: "/services/interior",
     image: "/media/start.jpg",
     imageAlt: "A line of cars on a street circuit",
-    icon: Sofa,
+    tag: "Bespoke",
+    categories: ["Leather", "Lighting"],
   },
   {
     title: "Window Tinting",
@@ -71,7 +66,8 @@ const services: {
     href: "/services/tint",
     image: "/media/speed.jpg",
     imageAlt: "Car accelerating through a corner",
-    icon: SunMedium,
+    tag: "₹15K–₹65K",
+    categories: ["Heat", "Privacy"],
   },
   {
     title: "Vinyl Wrapping",
@@ -79,7 +75,8 @@ const services: {
     href: "/services/vinyl",
     image: "/media/pink.jpg",
     imageAlt: "Front end of a finished car",
-    icon: Paintbrush,
+    tag: "Reversible",
+    categories: ["Colour", "Wrap"],
   },
   {
     title: "Alloy Wheels",
@@ -87,7 +84,8 @@ const services: {
     href: "/services/alloys",
     image: "/media/wheel.jpg",
     imageAlt: "Wheel and tyre detail",
-    icon: CircleDot,
+    tag: "Wheels",
+    categories: ["Fitment", "Finish"],
   },
 ];
 
@@ -122,9 +120,9 @@ export function OurServices() {
     return (
       <section className="services-stage py-16">
         <ServicesHeading />
-        <div className="rail mt-8 flex gap-5 overflow-x-auto px-4 pb-2 md:px-6">
+        <div className="rail mt-8 flex gap-4 overflow-x-auto px-4 pb-2 md:gap-5 md:px-6">
           {services.map((service) => (
-            <ServiceCard key={service.href + service.title} service={service} />
+            <ServiceCard key={service.href + service.title} service={service} compact />
           ))}
         </div>
       </section>
@@ -132,11 +130,13 @@ export function OurServices() {
   }
 
   return (
-    <section ref={trackRef} className="services-stage relative" style={{ height: `calc(100vh + ${travel}px)` }}>
-      <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden pt-16">
-        <ServicesHeading />
-        <div ref={viewportRef} className="mt-8 overflow-hidden">
-          <motion.div ref={rowRef} style={{ x }} className="flex w-max gap-5 px-4 md:px-6">
+    <section ref={trackRef} className="services-stage relative" style={{ height: `calc(100svh + ${travel}px)` }}>
+      <div className="sticky top-0 flex h-svh flex-col overflow-hidden pt-16 pb-5">
+        <div className="shrink-0">
+          <ServicesHeading />
+        </div>
+        <div ref={viewportRef} className="mt-4 min-h-0 flex-1 overflow-hidden">
+          <motion.div ref={rowRef} style={{ x }} className="flex h-full w-max gap-4 px-4 md:gap-5 md:px-6">
             {services.map((service) => (
               <ServiceCard key={service.href + service.title} service={service} />
             ))}
@@ -167,29 +167,56 @@ function ServicesHeading() {
   );
 }
 
-function ServiceCard({ service }: { service: (typeof services)[number] }) {
-  const Icon = service.icon;
+function ServiceCard({
+  service,
+  compact = false,
+}: {
+  service: (typeof services)[number];
+  compact?: boolean;
+}) {
   return (
-    <article className="service-card flex w-[280px] shrink-0 flex-col rounded-2xl p-3 sm:w-[320px]">
-      <div className="relative">
-        <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
-          <Image src={service.image} alt={service.imageAlt} fill sizes="320px" className="object-cover" />
-        </div>
-        <span className="absolute bottom-0 left-1/2 grid h-12 w-12 -translate-x-1/2 translate-y-1/2 place-items-center rounded-full bg-[#e10600] text-white shadow-lg">
-          <Icon className="h-5 w-5" />
+    <Link
+      href={service.href}
+      className={`group relative flex w-[min(84vw,680px)] shrink-0 flex-col overflow-hidden bg-[#0b1220] text-white shadow-[0_20px_50px_rgba(0,0,0,0.28)] ${
+        compact ? "h-auto" : "h-full"
+      }`}
+    >
+      <span
+        className={`relative block overflow-hidden bg-black ${
+          compact ? "aspect-[16/10]" : "min-h-0 flex-1"
+        }`}
+      >
+        <Image
+          src={service.image}
+          alt={service.imageAlt}
+          fill
+          sizes="(min-width: 768px) 680px, 84vw"
+          className="object-cover transition duration-700 group-hover:scale-105"
+        />
+      </span>
+      <span className="relative shrink-0 bg-[#0b1220] px-5 py-4 sm:px-6 sm:py-5">
+        <span className="flex flex-wrap items-center gap-x-4 gap-y-2">
+          <span className="inline-flex border border-white/35 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-white/90">
+            {service.tag}
+          </span>
+          <span className="flex flex-wrap gap-x-4 text-[10px] font-bold uppercase tracking-[0.16em] text-white/55">
+            {service.categories.map((category) => (
+              <span key={category}>{category}</span>
+            ))}
+          </span>
         </span>
-      </div>
-      <div className="flex flex-1 flex-col px-2 pb-3 pt-8">
-        <h3 className="font-display text-xl font-bold uppercase tracking-wide">{service.title}</h3>
-        <p className="mt-2 text-sm leading-6 text-muted">{service.text}</p>
-        <Link
-          href={service.href}
-          className="mt-5 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-foreground hover:text-[#e10600]"
-        >
-          Learn more
-          <ArrowRight className="h-3.5 w-3.5" />
-        </Link>
-      </div>
-    </article>
+        <span className="mt-4 flex items-end justify-between gap-4">
+          <span className="min-w-0">
+            <span className="block font-display text-3xl font-bold uppercase leading-[0.92] tracking-tight sm:text-4xl md:text-5xl">
+              {service.title}
+            </span>
+            <span className="mt-2 block max-w-md text-sm leading-6 text-white/60">{service.text}</span>
+          </span>
+          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-white text-[#0b1220] transition group-hover:bg-[#e10600] group-hover:text-white sm:h-12 sm:w-12">
+            <ArrowUpRight className="h-5 w-5" />
+          </span>
+        </span>
+      </span>
+    </Link>
   );
 }

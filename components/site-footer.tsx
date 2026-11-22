@@ -17,11 +17,7 @@ export function SiteFooter() {
     <footer className="border-t border-border surface-panel text-foreground">
       <div className="mx-auto grid max-w-[1440px] gap-10 px-4 py-12 sm:grid-cols-2 md:px-6 lg:grid-cols-4">
         <div>
-          <Link
-            href="/"
-            aria-label="Fasttracks Car Care home"
-            className="inline-flex items-center gap-3 rounded-md bg-[#0c0c10] px-2 py-1.5"
-          >
+          <Link href="/" aria-label="Fasttracks Car Care home" className="inline-flex items-center">
             <Image
               src="/images/full-text-logo.png"
               alt="Fasttracks"
