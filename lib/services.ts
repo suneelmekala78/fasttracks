@@ -23,11 +23,11 @@ export const studioServices: StudioService[] = [
     summary: "First-class lounge seats installed in India's premium SUVs and MPVs.",
     body: [
       "The studio's most requested job. We install luxury recliners that turn a cabin into a first-class lounge on wheels.",
-      "Allow about a week of notice. Fits Innova Crysta, Fortuner, Hi-Cross, Land Cruiser, Defender, Vellfire, Carnival, GLS, X5, X7, V-Class, Alcazar, Gloster, Thar, Scorpio N, MU-X, Force/Tempo Traveller, and mini buses.",
+      "Allow about a week of notice. Fits Innova Crysta, Fortuner, Hi-Cross, Land Cruiser, Defender, Vellfire, Carnival, GLS, X5, X7, V-Class, Lexus LM, Alcazar, Gloster, Thar, Scorpio N, MU-X, Force/Tempo Traveller, and mini buses.",
     ],
     highlights: ["Premium SUV & MPV fitments", "One-week notice", "Custom leather & finishes"],
-    image: "/media/speed.jpg",
-    imageAlt: "Performance car finish representing premium cabin work",
+    image: "/images/recliners.jpg",
+    imageAlt: "Luxury recliner cabin install",
     featured: true,
   },
   {
@@ -42,8 +42,8 @@ export const studioServices: StudioService[] = [
       "The film takes rock chips, swirl marks, and sun so the clear coat does not have to.",
     ],
     highlights: ["Self-healing film", "Full body or panels", "UV & chip shield"],
-    image: "/media/wheel.jpg",
-    imageAlt: "Close view of bodywork and tyre",
+    image: "/images/ppf.jpg",
+    imageAlt: "Paint protection film on a vehicle",
     featured: true,
   },
   {
@@ -58,8 +58,8 @@ export const studioServices: StudioService[] = [
       "Swirls, scratches, and oxidation come back to a factory mirror without masking the clear coat.",
     ],
     highlights: ["Menzerna compounds", "Zero filler", "Mirror finish"],
-    image: "/media/pink.jpg",
-    imageAlt: "Gloss paint under studio light",
+    image: "/images/srs.jpg",
+    imageAlt: "SRS paint correction finish",
     featured: true,
   },
   {
@@ -74,8 +74,8 @@ export const studioServices: StudioService[] = [
       "Every install starts with how the cabin listens, then the hardware follows.",
     ],
     highlights: ["Cabin-first tuning", "Amp & sub installs", "From ₹1 lakh"],
-    image: "/media/red.jpg",
-    imageAlt: "Car moving through a dark scene",
+    image: "/images/audio.jpg",
+    imageAlt: "Custom car audio install",
   },
   {
     slug: "interior",
@@ -89,8 +89,8 @@ export const studioServices: StudioService[] = [
       "No upper limit when the brief asks for it.",
     ],
     highlights: ["Custom leather & suede", "Ambient lighting", "Bespoke trims"],
-    image: "/media/start.jpg",
-    imageAlt: "Line of cars suggesting premium cabin builds",
+    image: "/images/intirior.jpg",
+    imageAlt: "Custom leather interior cabin",
   },
   {
     slug: "tint",
@@ -104,8 +104,8 @@ export const studioServices: StudioService[] = [
       "Grades from daily drivers to fully blacked-out luxury builds.",
     ],
     highlights: ["Heat rejection", "UV protection", "Privacy grades"],
-    image: "/media/pink.jpg",
-    imageAlt: "Bright light across a car nose",
+    image: "/images/window-tinting.jpg",
+    imageAlt: "Window tinting on a vehicle",
   },
   {
     slug: "vinyl",
@@ -119,8 +119,8 @@ export const studioServices: StudioService[] = [
       "Change the look without committing the factory paint.",
     ],
     highlights: ["Reversible colour change", "Full or accent wraps", "Paint stays protected"],
-    image: "/media/pink.jpg",
-    imageAlt: "Wrapped front end detail",
+    image: "/images/wrapping.jpg",
+    imageAlt: "Vinyl wrap finish on a car",
   },
   {
     slug: "alloys",
@@ -133,8 +133,8 @@ export const studioServices: StudioService[] = [
       "Fitment that sits right, finishes that last, and powder coats matched to the build.",
     ],
     highlights: ["Performance fitment", "Refinishing", "Custom powder coat"],
-    image: "/media/wheel.jpg",
-    imageAlt: "Wheel and tyre detail",
+    image: "/images/wheels.jpg",
+    imageAlt: "Alloy wheel fitment and finish",
   },
   {
     slug: "suspension",
@@ -147,8 +147,8 @@ export const studioServices: StudioService[] = [
       "Coilovers or air suspension for stance and control. Setup follows how you use the car.",
     ],
     highlights: ["Coilovers", "Air suspension", "Stance & handling"],
-    image: "/media/red.jpg",
-    imageAlt: "Car on track surface",
+    image: "/images/wheels.jpg",
+    imageAlt: "Suspension and stance on alloy wheels",
   },
   {
     slug: "hydro-dipping",
@@ -161,8 +161,8 @@ export const studioServices: StudioService[] = [
       "One-of-one pattern work for interiors and exterior accents.",
     ],
     highlights: ["Custom patterns", "Trims & accents", "Unique finishes"],
-    image: "/media/start.jpg",
-    imageAlt: "Cars stacked suggesting custom finishes",
+    image: "/images/wrapping.jpg",
+    imageAlt: "Custom patterned finish accents",
   },
   {
     slug: "interior-cleaning",
@@ -175,8 +175,8 @@ export const studioServices: StudioService[] = [
       "A deep cabin reset in one to two hours. Steam, shampoo, and ozone for a brand-new feel.",
     ],
     highlights: ["Steam & shampoo", "Ozone treatment", "Same-day turnaround"],
-    image: "/media/wheel.jpg",
-    imageAlt: "Detail finish on vehicle surface",
+    image: "/images/intirior.jpg",
+    imageAlt: "Deep cleaned vehicle interior",
   },
   {
     slug: "infotainment",
@@ -189,8 +189,8 @@ export const studioServices: StudioService[] = [
       "Modern screens and connectivity for every make that rolls into Jubilee Hills.",
     ],
     highlights: ["Apple CarPlay", "Android Auto", "Custom displays"],
-    image: "/media/speed.jpg",
-    imageAlt: "Dynamic car shot for cabin tech upgrades",
+    image: "/images/audio.jpg",
+    imageAlt: "Cabin tech and infotainment upgrade",
   },
 ];
 
@@ -206,45 +206,27 @@ export type ReclinerVehicle = {
   accent?: boolean;
 };
 
-const vehicleImages = [
-  { image: "/media/speed.jpg", imageAlt: "Premium SUV exterior", focus: "center" },
-  { image: "/media/wheel.jpg", imageAlt: "Wheel and body detail", focus: "center" },
-  { image: "/media/pink.jpg", imageAlt: "Gloss paint finish", focus: "center" },
-  { image: "/media/red.jpg", imageAlt: "Performance car on road", focus: "center" },
-  { image: "/media/start.jpg", imageAlt: "Line of premium cars", focus: "center" },
+export const reclinerVehicles: ReclinerVehicle[] = [
+  { name: "Innova Crysta", image: "/images/recliners/innova-crysta.jpg", imageAlt: "Innova Crysta recliner fitment", accent: true },
+  { name: "Fortuner", image: "/images/recliners/fortuner.jpg", imageAlt: "Fortuner recliner fitment" },
+  { name: "Hi-Cross", image: "/images/recliners/hi-cross.jpg", imageAlt: "Hi-Cross recliner fitment" },
+  { name: "Land Cruiser", image: "/images/recliners/landcruiser.jpg", imageAlt: "Land Cruiser recliner fitment" },
+  { name: "Defender", image: "/images/recliners/defender.jpg", imageAlt: "Defender recliner fitment" },
+  { name: "Vellfire", image: "/images/recliners/vellfire.jpg", imageAlt: "Vellfire recliner fitment" },
+  { name: "Carnival", image: "/images/recliners/carnival.jpg", imageAlt: "Carnival recliner fitment" },
+  { name: "GLS", image: "/images/recliners/gls.jpg", imageAlt: "Mercedes GLS recliner fitment" },
+  { name: "X5", image: "/images/recliners/x5.jpg", imageAlt: "BMW X5 recliner fitment" },
+  { name: "X7", image: "/images/recliners/x7.jpg", imageAlt: "BMW X7 recliner fitment" },
+  { name: "V-Class", image: "/images/recliners/v-class.jpg", imageAlt: "Mercedes V-Class recliner fitment" },
+  { name: "Lexus LM", image: "/images/recliners/lexus-lm.jpg", imageAlt: "Lexus LM recliner fitment" },
+  { name: "Alcazar", image: "/images/recliners/alcazar.jpg", imageAlt: "Alcazar recliner fitment" },
+  { name: "Gloster", image: "/images/recliners/gloster.jpg", imageAlt: "Gloster recliner fitment" },
+  { name: "Thar", image: "/images/recliners/thar.jpg", imageAlt: "Thar recliner fitment" },
+  { name: "Scorpio N", image: "/images/recliners/scarpio.jpg", imageAlt: "Scorpio N recliner fitment" },
+  { name: "MU-X", image: "/images/recliners/mux.jpg", imageAlt: "Isuzu MU-X recliner fitment" },
+  { name: "Force / Tempo Traveller", image: "/images/recliners/tempo.jpg", imageAlt: "Tempo Traveller recliner fitment" },
+  { name: "Mini buses", image: "/images/recliners/mini-bus.jpg", imageAlt: "Mini bus recliner fitment" },
 ];
-
-const reclinerVehicleNames = [
-  "Innova Crysta",
-  "Fortuner",
-  "Hi-Cross",
-  "Land Cruiser",
-  "Defender",
-  "Vellfire",
-  "Carnival",
-  "GLS",
-  "X5",
-  "X7",
-  "V-Class",
-  "Alcazar",
-  "Gloster",
-  "Thar",
-  "Scorpio N",
-  "MU-X",
-  "Force / Tempo Traveller",
-  "Mini buses",
-];
-
-export const reclinerVehicles: ReclinerVehicle[] = reclinerVehicleNames.map((name, index) => {
-  const media = vehicleImages[index % vehicleImages.length];
-  return {
-    name,
-    image: media.image,
-    imageAlt: `${name} recliner fitment`,
-    focus: media.focus,
-    accent: index === 0,
-  };
-});
 
 export const partners = [
   { name: "Menzerna", note: "SRS paint correction compounds" },

@@ -28,8 +28,8 @@ export default function ReclinersPage() {
         kicker="Most requested"
         title="Luxury recliners"
         description="First-class lounge seats for India's premium SUVs and MPVs. India's biggest instant modification studio, Jubilee Hills."
-        image="/media/speed.jpg"
-        imageAlt="Premium car finish for recliner cabin work"
+        image="/images/recliners.jpg"
+        imageAlt="Luxury recliner cabin work at Fasttracks"
         video
       />
 

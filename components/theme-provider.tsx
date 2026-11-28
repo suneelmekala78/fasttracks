@@ -5,7 +5,6 @@ import {
   useCallback,
   useContext,
   useMemo,
-  useState,
   useSyncExternalStore,
   type ReactNode,
 } from "react";
@@ -24,38 +23,46 @@ type ThemeContextValue = {
 };
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
+const THEME_EVENT = "ft-theme";
 
-function subscribe() {
-  return () => {};
+function subscribe(onStoreChange: () => void) {
+  if (typeof window === "undefined") return () => {};
+  const onChange = () => onStoreChange();
+  window.addEventListener("storage", onChange);
+  window.addEventListener(THEME_EVENT, onChange);
+  return () => {
+    window.removeEventListener("storage", onChange);
+    window.removeEventListener(THEME_EVENT, onChange);
+  };
+}
+
+function getSnapshot(): Theme {
+  return readStoredTheme();
+}
+
+function getServerSnapshot(): Theme {
+  return DEFAULT_THEME;
+}
+
+function persistTheme(theme: Theme) {
+  try {
+    localStorage.setItem(THEME_STORAGE_KEY, theme);
+  } catch {
+    /* ignore */
+  }
+  applyTheme(theme);
+  window.dispatchEvent(new Event(THEME_EVENT));
 }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const hydrated = useSyncExternalStore(subscribe, () => true, () => false);
-  const [override, setOverride] = useState<Theme | null>(null);
-  const theme = override ?? (hydrated ? readStoredTheme() : DEFAULT_THEME);
+  const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   const setTheme = useCallback((next: Theme) => {
-    try {
-      localStorage.setItem(THEME_STORAGE_KEY, next);
-    } catch {
-      /* ignore */
-    }
-    applyTheme(next);
-    setOverride(next);
+    persistTheme(next);
   }, []);
 
   const toggleTheme = useCallback(() => {
-    setOverride((current) => {
-      const base = current ?? readStoredTheme();
-      const next: Theme = base === "dark" ? "light" : "dark";
-      try {
-        localStorage.setItem(THEME_STORAGE_KEY, next);
-      } catch {
-        /* ignore */
-      }
-      applyTheme(next);
-      return next;
-    });
+    persistTheme(readStoredTheme() === "dark" ? "light" : "dark");
   }, []);
 
   const value = useMemo(() => ({ theme, setTheme, toggleTheme }), [theme, setTheme, toggleTheme]);

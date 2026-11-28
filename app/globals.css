@@ -108,13 +108,13 @@ button:focus-visible {
 .clip-play {
   position: absolute;
   z-index: 20;
-  left: 1.25rem;
-  top: 50%;
+  left: 1rem;
+  top: auto;
   right: auto;
-  bottom: auto;
+  bottom: 0.75rem;
   width: 3.5rem;
   height: 3.5rem;
-  transform: translateY(-50%);
+  transform: none;
 }
 
 .nav-carbon {
@@ -181,6 +181,31 @@ button:focus-visible {
   animation-play-state: paused;
 }
 
+.reviews-marquee {
+  overflow: hidden;
+}
+
+.reviews-marquee:hover .reviews-track {
+  animation-play-state: paused;
+}
+
+.reviews-track {
+  display: flex;
+  width: max-content;
+  gap: 1rem;
+  animation-duration: 42s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.reviews-track-rtl {
+  animation-name: reviews-marquee-rtl;
+}
+
+.reviews-track-ltr {
+  animation-name: reviews-marquee-ltr;
+}
+
 @keyframes partners-marquee {
   from {
     transform: translateX(0);
@@ -190,8 +215,27 @@ button:focus-visible {
   }
 }
 
+@keyframes reviews-marquee-rtl {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes reviews-marquee-ltr {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track {
+  .marquee-track,
+  .reviews-track {
     animation: none;
   }
 }

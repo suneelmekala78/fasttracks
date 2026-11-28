@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { SocialLinks } from "@/components/social-links";
 import { WhatsAppIcon } from "@/components/whatsapp-icon";
 import {
   footerServices,
@@ -30,6 +31,7 @@ export function SiteFooter() {
             India&apos;s biggest instant car modification studio. Jubilee Hills,
             Hyderabad. Est. 2002.
           </p>
+          <SocialLinks className="mt-5" />
         </div>
         <FooterColumn title="Services" links={footerServices} />
         <FooterColumn title="Studio" links={footerVisit} />

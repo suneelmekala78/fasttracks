@@ -5,7 +5,7 @@ import { Play } from "lucide-react";
 import { CtaBand } from "@/components/cta-band";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion";
 import { PageHero } from "@/components/page-hero";
-import { allVideos } from "@/lib/content";
+import { allVideos, youtubeChannelUrl } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Studio films",
@@ -18,14 +18,22 @@ export default function VideosPage() {
       <PageHero
         kicker="Watch"
         title="Studio films"
-        description="Recliners, PPF, wraps, and cabin builds — the floor on camera."
-        image="/media/start.jpg"
+        description="Builds from the Fasttracks Car Care Hyderabad YouTube channel — the floor on camera."
+        image="/images/recliners.jpg"
         video
       />
 
       <section className="mx-auto max-w-[1440px] px-4 py-14 md:px-6 md:py-20">
-        <FadeIn>
+        <FadeIn className="flex flex-wrap items-end justify-between gap-4">
           <h2 className="font-display text-4xl font-bold uppercase tracking-tight md:text-5xl">All films</h2>
+          <a
+            href={youtubeChannelUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-semibold text-[#e10600] hover:underline"
+          >
+            YouTube channel
+          </a>
         </FadeIn>
         <Stagger className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
           {allVideos.map((clip) => (

@@ -13,6 +13,29 @@ export const hours = [
 export const founderInstagram = "https://www.instagram.com/rakesh_knv/";
 export const studioInstagram = "https://www.instagram.com/fasttracks_car_care/";
 
+export const socialLinks = [
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/Fasttracks-Car-Care-2207501395983898",
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/fasttracks_car_care/",
+  },
+  {
+    label: "WhatsApp",
+    href: "https://wa.me/917352525252",
+  },
+  {
+    label: "YouTube",
+    href: "https://www.youtube.com/c/FasttracksCarCareHyderabad/featured",
+  },
+  {
+    label: "Linktree",
+    href: "https://linktr.ee/fasttracks",
+  },
+] as const;
+
 export const mapsHref =
   "https://www.google.com/maps/search/?api=1&query=Fasttracks+Car+Care+1355%2FF+Road+No+45+Jubilee+Hills+Hyderabad";
 

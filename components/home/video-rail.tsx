@@ -83,11 +83,11 @@ export function VideoRail({
                 <Play className="ml-0.5 h-6 w-6 fill-black" />
               </span>
               {clip.overlay ? (
-                <span className="pointer-events-none absolute left-16 right-3 top-1/2 -translate-y-1/2 font-sans text-xl font-black italic leading-tight text-[#b8fff4] drop-shadow-[0_2px_8px_rgba(0,0,0,0.75)]">
+                <span className="pointer-events-none absolute left-4 right-3 top-4 font-sans text-xl font-black italic leading-tight text-[#b8fff4] drop-shadow-[0_2px_8px_rgba(0,0,0,0.75)]">
                   {clip.overlay}
                 </span>
               ) : null}
-              <span className="absolute bottom-2 right-2 rounded bg-black/80 px-1.5 py-0.5 text-[11px] font-semibold tabular-nums">
+              <span className="absolute bottom-2 right-2 z-10 rounded bg-black/80 px-1.5 py-0.5 text-[11px] font-semibold tabular-nums">
                 {clip.duration}
               </span>
             </span>

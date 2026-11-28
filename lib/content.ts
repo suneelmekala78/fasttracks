@@ -17,7 +17,14 @@ export type Clip = {
   focus: string;
   overlay?: string;
   excerpt: string;
+  youtubeId: string;
 };
+
+export const youtubeChannelUrl = "https://www.youtube.com/@FasttracksCarCareHyderabad/videos";
+
+function ytThumb(id: string) {
+  return `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+}
 
 export const editorStories: Story[] = [
   {
@@ -25,8 +32,8 @@ export const editorStories: Story[] = [
     title: "Luxury recliners for India's most premium SUVs",
     excerpt:
       "Custom recliners in Innova, Fortuner, Vellfire, Defender, and more — a first-class cabin on wheels.",
-    image: "/media/speed.jpg",
-    imageAlt: "Red performance car on track, the kind of finish Fasttracks protects and restyles",
+    image: "/images/recliners.jpg",
+    imageAlt: "Luxury recliner cabin install",
     focus: "center",
     kicker: "Most requested",
   },
@@ -35,8 +42,8 @@ export const editorStories: Story[] = [
     title: "Full-body PPF from ₹1 lakh, bonnet from ₹20K",
     excerpt:
       "Self-healing film takes the rock chips and UV so the paint does not have to.",
-    image: "/media/wheel.jpg",
-    imageAlt: "Close view of a racing tyre and bodywork",
+    image: "/images/ppf.jpg",
+    imageAlt: "Paint protection film on a vehicle",
     focus: "center",
     kicker: "Paint Protection",
   },
@@ -45,8 +52,8 @@ export const editorStories: Story[] = [
     title: "SRS paint correction with zero filler",
     excerpt:
       "Skin Restoration System using Menzerna. Swirls and oxidation erased back to a mirror finish.",
-    image: "/media/pink.jpg",
-    imageAlt: "Glossy car nose and front wing in studio light",
+    image: "/images/srs.jpg",
+    imageAlt: "SRS paint correction finish",
     focus: "center",
     kicker: "Signature",
   },
@@ -55,8 +62,8 @@ export const editorStories: Story[] = [
     title: "Custom audio systems from ₹1 lakh",
     excerpt:
       "Subwoofers, amplifiers, and tuning built around the cabin — concert hall, in your car.",
-    image: "/media/red.jpg",
-    imageAlt: "Car leaving a corner under a dark sky",
+    image: "/images/audio.jpg",
+    imageAlt: "Custom car audio install",
     focus: "center",
     kicker: "Audio",
   },
@@ -64,124 +71,130 @@ export const editorStories: Story[] = [
 
 export const allStories = editorStories;
 
-const reclinerFilm: Clip = {
-  slug: "recliner-install-fortuner-to-first-class",
-  title: "Recliner install: Fortuner to first class",
-  duration: "2:14",
-  image: "/media/start.jpg",
-  imageAlt: "A line of cars between grandstands",
+const studioReel: Clip = {
+  slug: "ten-cars-hundreds-of-transformations",
+  title: "Ten cars. Hundreds of transformations.",
+  duration: "17:14",
+  youtubeId: "KmKhbiPta1Q",
+  image: ytThumb("KmKhbiPta1Q"),
+  imageAlt: "Fasttracks studio transformation reel",
   focus: "center",
-  excerpt: "How a cabin recliner goes into a premium SUV at the Jubilee Hills studio.",
+  overlay: "Name is enough.",
+  excerpt: "A Fasttracks montage of builds leaving the Jubilee Hills floor.",
 };
 
-const ppfFilm: Clip = {
-  slug: "full-body-ppf-start-to-finish",
-  title: "Full-body PPF, start to finish",
-  duration: "3:40",
-  image: "/media/speed.jpg",
-  imageAlt: "Gloss red car in motion",
+const poloMod: Clip = {
+  slug: "polo-full-modification",
+  title: "Polo full modification",
+  duration: "8:31",
+  youtubeId: "5YL8Rv9zM-o",
+  image: ytThumb("5YL8Rv9zM-o"),
+  imageAlt: "Volkswagen Polo full modification at Fasttracks",
   focus: "center",
-  overlay: "Paint stays safe.",
-  excerpt: "Military-grade film, panel by panel, on a full-body protection job.",
+  excerpt: "A complete Polo rebuild on the Fasttracks floor in Hyderabad.",
 };
 
-const srsFilm: Clip = {
-  slug: "srs-correction-on-a-black-suv",
-  title: "SRS correction on a black SUV",
-  duration: "1:55",
-  image: "/media/red.jpg",
-  imageAlt: "Dark car running over painted kerbs",
-  focus: "center 60%",
-  excerpt: "Zero-filler paint correction with Menzerna, taken back to a factory mirror.",
+const tharRoxx: Clip = {
+  slug: "thar-roxx-full-modification",
+  title: "Thar Roxx full modification",
+  duration: "4:38",
+  youtubeId: "nIJ4S9iCRJU",
+  image: ytThumb("nIJ4S9iCRJU"),
+  imageAlt: "Mahindra Thar Roxx full modification",
+  focus: "center",
+  excerpt: "Full Thar Roxx modification filmed at Fasttracks Car Care.",
 };
 
-const audioFilm: Clip = {
-  slug: "custom-audio-built-around-the-cabin",
-  title: "Custom audio, built around the cabin",
-  duration: "2:08",
-  image: "/media/wheel.jpg",
-  imageAlt: "Close-up of a performance tyre",
+const claInfotainment: Clip = {
+  slug: "mercedes-cla-android-infotainment",
+  title: "Mercedes CLA Android infotainment",
+  duration: "0:55",
+  youtubeId: "m1q39Z9vCyU",
+  image: ytThumb("m1q39Z9vCyU"),
+  imageAlt: "Mercedes CLA Android infotainment upgrade",
+  focus: "center",
+  overlay: "Screens.",
+  excerpt: "CLA cabin upgraded with a new Android infotainment system.",
+};
+
+const nissanAudio: Clip = {
+  slug: "nissan-audio-system-upgrade",
+  title: "Nissan audio system upgrade",
+  duration: "0:21",
+  youtubeId: "BuY1BPb8f1U",
+  image: ytThumb("BuY1BPb8f1U"),
+  imageAlt: "Nissan audio system upgrade at Fasttracks",
   focus: "center",
   overlay: "Concert hall.",
-  excerpt: "A from-scratch audiophile install, starting at ₹1 lakh.",
+  excerpt: "A custom audio upgrade filmed in the Hyderabad studio.",
 };
 
-const wrapFilm: Clip = {
-  slug: "satin-wrap-new-colour-overnight",
-  title: "Satin wrap: a new colour, paint stays underneath",
-  duration: "1:32",
-  image: "/media/pink.jpg",
-  imageAlt: "Front end of a wrapped formula car",
+const carnivalFootstep: Clip = {
+  slug: "kia-carnival-automatic-footstep",
+  title: "Kia Carnival 2025 automatic footstep",
+  duration: "0:26",
+  youtubeId: "Dgyebth8_9s",
+  image: ytThumb("Dgyebth8_9s"),
+  imageAlt: "Kia Carnival automatic footstep install",
   focus: "center",
-  excerpt: "Satin, gloss, matte, or colour-shift — fully reversible vinyl.",
+  excerpt: "Carnival upgraded with an automatic footstep at Fasttracks.",
 };
 
-const studioReel: Clip = {
-  slug: "2026-studio-reel",
-  title: "2026 studio reel: Jubilee Hills",
-  duration: "4:20",
-  image: "/media/start.jpg",
-  imageAlt: "Cars stacked through a tight section",
-  focus: "left center",
-  excerpt: "A year of recliners, PPF, wraps, and cabins leaving the studio.",
-};
-
-const vellfire: Clip = {
-  slug: "vellfire-cabin-transformation",
-  title: "Vellfire cabin, reimagined",
-  duration: "1:48",
-  image: "/media/speed.jpg",
-  imageAlt: "Red and white car accelerating",
-  focus: "70% 40%",
-  excerpt: "Leather, lighting, and a recliner install in a Toyota Vellfire.",
-};
-
-const travo: Clip = {
-  slug: "travo-bodykit-hilux-fortuner",
-  title: "Travo bodykit for Hilux and Fortuner",
-  duration: "2:36",
-  image: "/media/red.jpg",
-  imageAlt: "Rear of a car over red and blue kerbs",
+const endeavourAlloys: Clip = {
+  slug: "ford-endeavour-stylish-alloys",
+  title: "Ford Endeavour stylish alloys",
+  duration: "0:16",
+  youtubeId: "zPC_8P369gs",
+  image: ytThumb("zPC_8P369gs"),
+  imageAlt: "Ford Endeavour alloy wheel upgrade",
   focus: "center",
-  excerpt: "India's Travo bodykit installer for Hilux and Fortuner, in Jubilee Hills.",
+  excerpt: "Endeavour rolling out on a fresh set of alloys.",
 };
 
-const tint: Clip = {
-  slug: "window-film-heat-and-privacy",
-  title: "Window film: heat, privacy, UV",
-  duration: "0:58",
-  image: "/media/pink.jpg",
-  imageAlt: "Car nose in bright light",
-  focus: "center 30%",
-  excerpt: "Premium solar film from ₹15K to ₹65K.",
+const skodaLighting: Clip = {
+  slug: "skoda-rapid-ambient-lighting",
+  title: "Skoda Rapid ambient lighting",
+  duration: "0:18",
+  youtubeId: "tfvUxI1q8ao",
+  image: ytThumb("tfvUxI1q8ao"),
+  imageAlt: "Skoda Rapid ambient lighting upgrade",
+  focus: "center",
+  excerpt: "Sleek ambient lighting fitted to a Skoda Rapid.",
 };
 
-const deepClean: Clip = {
-  slug: "deep-interior-clean-in-two-hours",
-  title: "Deep interior clean in one to two hours",
-  duration: "1:05",
-  image: "/media/wheel.jpg",
-  imageAlt: "Detail of a tyre and sidepod",
-  focus: "center 80%",
-  excerpt: "Steam, shampoo, and ozone. ₹5K–₹7K. Drive out the same day.",
+const audiInfotainment: Clip = {
+  slug: "audi-q3-infotainment-upgrade",
+  title: "Audi Q3 infotainment upgrade",
+  duration: "0:18",
+  youtubeId: "r1ogN3CPTI4",
+  image: ytThumb("r1ogN3CPTI4"),
+  imageAlt: "Audi Q3 infotainment system upgrade",
+  focus: "center",
+  excerpt: "Q3 cabin updated with a new infotainment system.",
 };
 
-export const mustWatch: Clip[] = [reclinerFilm, ppfFilm, srsFilm, audioFilm, wrapFilm];
+const tharMod: Clip = {
+  slug: "mahindra-thar-modification",
+  title: "Mahindra Thar modification",
+  duration: "0:39",
+  youtubeId: "7TG5akuiKi4",
+  image: ytThumb("7TG5akuiKi4"),
+  imageAlt: "Mahindra Thar modification at Fasttracks",
+  focus: "center",
+  excerpt: "Grill, lights, alloys, and more — a Thar leave the floor transformed.",
+};
 
-export const highlights: Clip[] = [studioReel, vellfire, travo, tint, deepClean];
+export const mustWatch: Clip[] = [studioReel, poloMod, tharRoxx, claInfotainment, nissanAudio];
 
-export const allVideos: Clip[] = [
-  reclinerFilm,
-  ppfFilm,
-  srsFilm,
-  audioFilm,
-  wrapFilm,
-  studioReel,
-  vellfire,
-  travo,
-  tint,
-  deepClean,
+export const highlights: Clip[] = [
+  carnivalFootstep,
+  endeavourAlloys,
+  skodaLighting,
+  audiInfotainment,
+  tharMod,
 ];
+
+export const allVideos: Clip[] = [...mustWatch, ...highlights];
 
 export function storyBySlug(slug: string) {
   return allStories.find((story) => story.slug === slug);
@@ -189,4 +202,12 @@ export function storyBySlug(slug: string) {
 
 export function videoBySlug(slug: string) {
   return allVideos.find((video) => video.slug === slug);
+}
+
+export function youtubeWatchUrl(id: string) {
+  return `https://www.youtube.com/watch?v=${id}`;
+}
+
+export function youtubeEmbedUrl(id: string) {
+  return `https://www.youtube.com/embed/${id}`;
 }
